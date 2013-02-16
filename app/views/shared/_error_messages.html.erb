@@ -1,0 +1,14 @@
+<div class="alert alert-message notice" data-alert>
+  <a class="close" data-dismiss="alert">×</a>
+  <p>
+    <h5> Les erreurs suivantes sont survenues : </h5>
+    <ul>
+      <% error_messages.split(';').each do |error_message| %>
+        <li> 
+          <%= error_message %> 
+        </li>
+      <% end %>
+    </ul>
+  </p>
+</div>
+

@@ -1,0 +1,21 @@
+<%= form_tag sessions_path do %>
+  <div class="clearfix">
+    <%= label_tag :email, "Email" %>
+    <div class="input">
+      <%= text_field_tag :email, params[:email] %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= label_tag :password, "Password" %>
+    <div class="input">
+      <%= password_field_tag :password %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <div class="input">
+      <%= check_box_tag :remember_me, 1, params[:remember_me] %> Rester authentifié
+    </div>
+  </div>
+  <%= submit_tag "Connexion", :class => "btn btn-primary" %>
+  <%= link_to "Pas de compte ? Inscription !!", signup_path, :class => "btn btn-success" %>
+<% end %>

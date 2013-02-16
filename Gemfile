@@ -5,7 +5,7 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'mysql2'
 
 
 # Gems used only for assets and not required
@@ -17,22 +17,42 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
+  #pour le fileupload
+    gem 'jquery-fileupload-rails'
+
   gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'json'
+gem "therubyracer", ">= 0.8.2"
+#gem 'best_in_place'
+gem 'awesome_nested_set'
+#pour la recherche de model
+gem 'ransack'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
+
+group :development, :test do
+  # gem "rb-inotify"
+  # gem "libnotify"
+  # gem "guard-rspec"
+  # gem 'shoulda-matchers'
+#  gem "factory_girl_rails", "~> 1.2.0"
+  # gem "capybara"
+  # gem 'database_cleaner'
+  #Exception debug helper
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+#for the password_digest :
+gem 'bcrypt-ruby'
+
+#upload des photos
+gem 'carrierwave'
+# gem 'rmagick'
+

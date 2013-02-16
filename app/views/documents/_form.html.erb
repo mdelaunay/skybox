@@ -1,0 +1,47 @@
+<%= form_for @document, :html => {:multipart => true} do |f| %>
+  <fieldset>
+    <div class="clearfix">
+      <%= f.label :title, "Titre" %>
+      <div class="input">
+        <%= f.text_field :title %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :description, "Description" %>
+      <div class="input">
+        <%= f.text_area :description, :class => "input-xxlarge", :size => "120x4", :maxlength => 500 %>
+      </div>
+    </div>
+
+    
+  </fieldset>
+  
+  <div class="form-actions">
+    <%= f.submit @document.new_record? ? "Ajouter" : "Mettre à jour", :class => "btn btn-primary" %>
+    <% if !@document.new_record? %>
+      <%= link_to "Supprimer le document", document_path(@document), :method => :delete, :confirm => "Confirmez-vous la suppression du document #{@document.title}?", :title => "Suppression de #{@document.title}", :class => "btn btn-danger" %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if !@document.new_record? %>
+  <hr/>
+  <%= form_for [@document, Sheet.new ] do |s| %>
+    <fieldset>
+      <div class="clearfix">
+        <%= s.label :paper, "Ajouter des fichiers (maximum de 10 par envoi conseillé)" %>
+        <div class="input">
+          <%= s.file_field :paper , :multiple => true, :name => "sheet[paper]", :class => "file-upload" %>
+          <span id="clear-all-files" data-id="<%= @document.id %>" class="btn btn-danger">
+            Effacer tous les fichiers
+          </span>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+<%= render "sheets_group", :document => @document, :editable => true %>
+
+<% end %>
+
+
+

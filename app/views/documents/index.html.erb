@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Mes documents 
+    <%= link_to "Créer un document", new_document_path(), :class =>"btn back-link btn-success" %>
+  </h1>
+</div>
+<div class="row">
+  <div class="span12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="20%">Titre</th>
+          <th>Description</th>
+          <th>Fichiers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @documents.each do |document| %>
+          <tr>
+            <td>
+              <%= link_to document.title, document_path(document) %>
+            </td>
+            <td><%= document.description %></td>
+            <td>
+              <%= render "sheets_group", :document => document, :editable => false %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>  
+  </div>
+</div>

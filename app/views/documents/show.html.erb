@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h1>
+    <%= @document.title %>
+    <%= link_to "Modifier", edit_document_path(@document), :class =>"btn btn-primary back-link" %>
+  </h1>
+</div>
+<div class="input clearfix">
+  <div class="span8">
+    <h5> 
+      Description
+    </h5>
+    <span>
+      <%= simple_format(@document.description) %> 
+    </span>
+  </div>
+</div>
+
+<div class="input clearfix">
+  <div class="span8">
+    <h5> 
+      Fichiers
+    </h5>
+    <%= render "sheets_group", :document => @document, :editable => false %>
+  </div>
+</div>
+

@@ -1,0 +1,12 @@
+<% if @sheet.new_record? %>
+  <% 
+    messages = "Erreurs survenues : "
+    @sheet.errors.each do |key, message|
+      messages += "\n#{message}"
+    end
+   %>
+  alert("<%= j messages %>");
+<% else %>
+  var hashcode = "<%= j @sheet.original_filename %>".hashCode()
+  $("#sheets_group").append("<div><%= j link_to @sheet.original_filename, "/uploads/sheets/#{@sheet.document.id}/#{@sheet.filename}" %></div>")
+<% end %>
