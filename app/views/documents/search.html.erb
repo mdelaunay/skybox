@@ -32,7 +32,7 @@
               </td>
               <td><%= highlight(document.description, @query) %></td>
               <td>
-                <%= render "sheets_group", :sheets => document.sheets, :options => {:editable => false} %>
+                <%= render "sheets_group", :sheets => document.sheets, :options => {:editable => false, :highlight => @query} %>
               </td>
             </tr>
           <% end %>
