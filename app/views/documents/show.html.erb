@@ -20,7 +20,7 @@
     <h5> 
       Fichiers
     </h5>
-    <%= render "sheets_group", :document => @document, :editable => false %>
+    <%= render "sheets_group", :sheets => @document.sheets, :options => {:editable => false} %>
   </div>
 </div>
 

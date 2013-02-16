@@ -24,7 +24,7 @@
             </td>
             <td><%= document.description %></td>
             <td>
-              <%= render "sheets_group", :document => document, :editable => false %>
+              <%= render "sheets_group", :sheets => document.sheets, :options => { :editable => false } %>
             </td>
           </tr>
         <% end %>

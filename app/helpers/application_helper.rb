@@ -29,7 +29,14 @@ module ApplicationHelper
     end
   end
 
-
+  def highlight(string, key)
+    res = string
+    key_array = key.split(' ')
+    key_array.each do |a_key|
+      res = res.gsub(a_key,"<span class=\"label label-warning\">#{a_key}</span>").html_safe
+    end
+    return res;
+  end
 
   private
 

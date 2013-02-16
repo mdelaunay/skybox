@@ -39,7 +39,7 @@
       </div>
     </fieldset>
   <% end %>
-<%= render "sheets_group", :document => @document, :editable => true %>
+<%= render "sheets_group", :sheets => @document.sheets, :options => {:editable => true} %>
 
 <% end %>
 

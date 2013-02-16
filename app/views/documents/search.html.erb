@@ -1,0 +1,51 @@
+<div class="page-header">
+  <h1>
+    Recherche de "<%= @query %>"
+  </h1>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <h2>
+      Documents
+    </h2>
+    <% if @documents.empty? %>
+      Aucun document ne correspond à la recherche.
+      <br/>
+      <br/>
+    <% else %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th width="20%">Titre</th>
+            <th>Description</th>
+            <th>Fichiers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @documents.each do |document| %>
+            <tr>
+              <td>
+                <%= link_to highlight(document.title, @query), document_path(document) %>
+                <br/>
+                <%= link_to image_tag("/assets/edit.png", :title => "Modifier", :class =>"little_image_size", :mouseover => "/assets/edit_on.png"), edit_document_path(document) %>
+              </td>
+              <td><%= highlight(document.description, @query) %></td>
+              <td>
+                <%= render "sheets_group", :sheets => document.sheets, :options => {:editable => false} %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>  
+    <% end %>
+    <h2>
+      Fichiers
+    </h2>
+    <% if @sheets.empty? %>
+      Aucun fichier ne correspond à la recherche.
+    <% else %>
+      <%= render "sheets_group", :sheets => @sheets, :options => {:editable => false, :highlight => @query} %>
+    <% end %>
+  </div>
+</div>

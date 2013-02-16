@@ -11,4 +11,5 @@ Skybox::Application.routes.draw do
       get 'clear_files'
     end
   end
+  get "search" => "documents#search", :as => "search"
 end

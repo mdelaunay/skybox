@@ -1,9 +1,13 @@
 <div id="sheets_group">
-  <% document.sheets.each do |sheet| %>
+  <% sheets.each do |sheet| %>
     <div>
-      <%= link_to sheet.original_filename, "/uploads/sheets/#{sheet.document.id}/#{sheet.filename}" %>
-      <% if editable %>
-        <%= link_to image_tag("/assets/delete.png", :title => "Supprimer", :class =>"little_image_size", :mouseover => "/assets/delete_on.png"), document_sheet_path(document, sheet), :method => :delete, :confirm => "Confirmez-vous la suppression du fichier #{sheet.original_filename}?", :title => "Suppression de #{sheet.original_filename}" %>
+      <% if !options[:highlight].nil? %>
+        <%= link_to highlight(sheet.original_filename, options[:highlight]), "/uploads/sheets/#{sheet.document.id}/#{sheet.filename}" %>
+      <% else %>
+        <%= link_to sheet.original_filename, "/uploads/sheets/#{sheet.document.id}/#{sheet.filename}" %>
+      <% end %>
+      <% if !options[:editable].nil? && options[:editable] %>
+        <%= link_to image_tag("/assets/delete.png", :title => "Supprimer", :class =>"little_image_size", :mouseover => "/assets/delete_on.png"), document_sheet_path(sheet.document, sheet), :method => :delete, :confirm => "Confirmez-vous la suppression du fichier #{sheet.original_filename}?", :title => "Suppression de #{sheet.original_filename}" %>
       <% end %>
     </div>
   <% end %>

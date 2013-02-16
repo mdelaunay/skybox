@@ -65,4 +65,17 @@ class DocumentsController < ApplicationController
     redirect_to edit_document_path(@document)
   end
 
+  def search
+    @query = params[:search][:query]
+    query = @query.downcase.gsub(" ", "%")
+    @documents = (current_user.documents.where('LOWER(title) LIKE ?', "%#{query}%") + current_user.documents.where('LOWER(description) LIKE ?', "%#{query}%")).uniq
+    @sheets = []
+    current_user.documents.each do |document|
+      document.sheets.where('LOWER(paper) LIKE ?', "%#{query}%").each do |sheet|
+        @sheets << sheet
+      end
+    end
+    @back_link = root_path
+  end
+
 end

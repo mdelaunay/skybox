@@ -24,6 +24,10 @@
         <div class="container">
           <%= link_to "Skybox", root_path, :class => "brand" %>
 
+          <%= form_tag '/search', :method => :get, :class => "navbar-search pull-left" do %>
+            <%= text_field :search, :query, :placeholder => "Recherche...", :class => "search-query span2" %>
+          <% end %>
+
           <ul class="nav pull-right">
             <li><%= render 'shared/back_link', :back_link => @back_link || :back %></li>
             <% if current_user %>
@@ -63,7 +67,7 @@
       </div>
 
       <footer style="margin-top:5px;">
-        <p align="right">&copy; Médéric 2013 | Skybox 0.0.1</p>
+        <p align="right">&copy; Médéric 2013 | Skybox 1.0.0</p>
       </footer>
 
     </div> <!-- /container -->
