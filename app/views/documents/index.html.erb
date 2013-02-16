@@ -19,6 +19,8 @@
           <tr>
             <td>
               <%= link_to document.title, document_path(document) %>
+              <br/>
+              <%= link_to image_tag("/assets/edit.png", :title => "Modifier", :class =>"little_image_size", :mouseover => "/assets/edit_on.png"), edit_document_path(document) %>
             </td>
             <td><%= document.description %></td>
             <td>

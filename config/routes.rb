@@ -7,5 +7,8 @@ Skybox::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   resources :documents do
     resources :sheets
+    member do
+      get 'clear_files'
+    end
   end
 end

@@ -56,4 +56,13 @@ class DocumentsController < ApplicationController
     @back_link = root_path
   end
 
+  def clear_files
+    @document = current_user.documents.find(params[:id])
+    @document.sheets.each do |sheet|
+      sheet.destroy
+    end
+    flash[:success] = "Tous les fichiers du document ont été effacés."
+    redirect_to edit_document_path(@document)
+  end
+
 end

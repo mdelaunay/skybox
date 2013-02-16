@@ -8,5 +8,8 @@
   alert("<%= j messages %>");
 <% else %>
   var hashcode = "<%= j @sheet.original_filename %>".hashCode()
-  $("#sheets_group").append("<div><%= j link_to @sheet.original_filename, "/uploads/sheets/#{@sheet.document.id}/#{@sheet.filename}" %></div>")
+  $("#sheets_group").append("<div>");
+  $("#sheets_group").append("<%= j link_to @sheet.original_filename, "/uploads/sheets/#{@sheet.document.id}/#{@sheet.filename}" %>");
+  $("#sheets_group").append("<%= j link_to image_tag("/assets/delete.png", :title => "Supprimer", :class =>"little_image_size", :mouseover => "/assets/delete_on.png"), document_sheet_path(@document, @sheet), :method => :delete, :confirm => "Confirmez-vous la suppression du fichier #{@sheet.original_filename}?", :title => "Suppression de #{@sheet.original_filename}" %>");  
+  $("#sheets_group").append("</div>");
 <% end %>
