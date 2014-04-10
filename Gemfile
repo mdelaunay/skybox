@@ -33,7 +33,7 @@ gem 'awesome_nested_set'
 gem 'ransack'
 
 # Deploy with Capistrano
-gem 'capistrano'
+gem 'capistrano', "~> 2.14.2"
 
 
 group :development, :test do
@@ -50,7 +50,7 @@ group :development, :test do
 end
 
 #for the password_digest :
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', "~> 3.0.1"
 
 #upload des photos
 gem 'carrierwave'
