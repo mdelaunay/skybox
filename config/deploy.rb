@@ -5,7 +5,8 @@ load 'deploy/assets'
 default_run_options[:pty] = true
 
 set :application, "skybox"
-set :repository,  "git@skycrafting.com:skybox.git"
+# set :repository,  "git@skycrafting.com:skybox.git"
+repo_url, 'git@github.com:mdelaunay/skybox.git'
 
 set :scm, :git
 set :branch, "master"
