@@ -19,4 +19,14 @@ class User < ActiveRecord::Base
     end while User.exists?(column => self[column])
   end
 
+  def disk_usage
+    res = 0
+    documents.each do |document|
+      document.sheets.each do |sheet|
+        res += sheet.paper.file.size
+      end
+    end
+    return ActionController::Base.helpers.number_to_human_size(res)
+  end
+
 end
